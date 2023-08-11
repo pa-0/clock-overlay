@@ -6,6 +6,8 @@ Developed and tested with Windows 10 Pro (v10.0.19045).
 
 ## Setup
 
+Make sure you have python3 and it's tkinter package installed.
+
 Clone this repository, cd into it and execute the following command;
 
 > pip install -e .
