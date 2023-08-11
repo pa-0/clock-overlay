@@ -1,5 +1,19 @@
 # clock-overlay
 
-This is a Windows 10 App for displaying the system time on top of other applications.
+This is a Windows 10 App for displaying the system time on top of other applications, except in fullscreen.
 
-## TBC
+Developed and tested with Windows 10 Pro (v10.0.19045).
+
+## Setup
+
+Clone this repository, cd into it and execute the following command;
+
+> pip install -e .
+
+## Usage
+
+Open Windows Run and execute the following command:
+
+> powershell Start-Process -WindowStyle "Hidden" clock-overlay
+
+This will open the application without a console window. Press the middle mouse button to quit.
