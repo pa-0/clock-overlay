@@ -19,4 +19,4 @@ clock-overlay = "clockoverlay.__main__:main"
 
 [project.urls]
 "Homepage" = "https://github.com/shyguys/clock-overlay"
-"Bug Tracker" = "https://github.com/shyguys/clock-overlay"
+"Bug Tracker" = "https://github.com/shyguys/clock-overlay/issues"
