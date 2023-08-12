@@ -8,40 +8,48 @@ from tkinter.font import Font
 class App():
     def __init__(self) -> None:
         self._app = self._get_app()
-        self._root = self._get_root()
         self._clock = self._get_clock()
+        self._reset_position()
         self._draw_time()
         return None
 
     def _get_app(self) -> tk.Tk:
         app = tk.Tk()
-        x, y = app.winfo_screenwidth()-50, 5
-        app.geometry(f"+{x}+{y}")
         app.rowconfigure(index=0, weight=1)
         app.columnconfigure(index=0, weight=1)
         app.overrideredirect(True)
         app.wm_attributes("-topmost", True)
-        app.bind_all("<ButtonRelease-2>", lambda e: sys.exit())
+        app.wm_attributes("-alpha", 0.9)
         return app
-
-    def _get_root(self) -> ttk.Frame:
-        root = ttk.Frame(master=self._app)
-        root.grid(row=0, column=0, sticky="nsew")
-        root.rowconfigure(index=0, weight=1)
-        root.columnconfigure(index=0, weight=1)
-        return root
 
     def _get_clock(self) -> ttk.Label:
         font = Font(family="Consolas", size=11)
-        label = ttk.Label(master=self._root, anchor="center", font=font)
-        label.grid(row=0, column=0, sticky="nsew")
-        style = ttk.Style(master=label.master)
+        clock = ttk.Label(master=self._app, anchor="center", font=font)
+        style = ttk.Style(master=clock.master)
         style.configure("TLabel", foreground="#00FF00", background="black")
-        return label
+        clock.grid(row=0, column=0, sticky="nsew")
+        clock.bind("<ButtonRelease-3>", self._reset_position)
+        clock.bind("<B1-Motion>", self._move_position)
+        clock.bind("<ButtonRelease-2>", self._close)
+        return clock
+
+    def _reset_position(self, event: tk.Event | None = None) -> None:
+        x, y = self._app.winfo_screenwidth()-50, 5
+        self._app.geometry(f"+{x}+{y}")
+        return None
+
+    def _move_position(self, event: tk.Event) -> None:
+        x, y = self._app.winfo_x() + event.x, self._app.winfo_y() + event.y
+        self._app.geometry(f"+{x}+{y}")
+        return None
+
+    def _close(self, event: tk.Event | None = None) -> None:
+        sys.exit()
 
     def _draw_time(self) -> None:
         self._clock.configure(text=time.strftime("%H:%M"))
-        self._clock.after(60_000, self._draw_time)
+        self._clock.after(1_000, self._draw_time)
+        return None
 
     def mainloop(self) -> None:
         self._app.mainloop()

@@ -4,11 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clock-overlay"
-version = "v1.0.0"
+version = "v1.1.0"
+authors = [
+  {name = "Martin Neufeld"}
+]
 requires-python = ">=3.11"
 classifiers = [
   "Programming Language :: Python :: 3"
 ]
+license = {file = "LICENSE"}
 
 [project.scripts]
 clock-overlay = "clockoverlay.__main__:main"
+
+[project.urls]
+"Homepage" = "https://github.com/shyguys/clock-overlay"
+"Bug Tracker" = "https://github.com/shyguys/clock-overlay/issues"

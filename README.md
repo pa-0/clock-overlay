@@ -18,4 +18,12 @@ Open Windows Run and execute the following command:
 
 > powershell Start-Process -WindowStyle "Hidden" clock-overlay
 
-This will open the application without a console window. Press the middle mouse button to quit.
+This will open the application without a console window.
+
+## Controls
+
+| Trigger | Effect |
+| - | - |
+| Hold left mouse button (1) and move | Change position |
+| Release middle mouse button (2) | Quit application |
+| Release right mouse button (3) | Reset position |
