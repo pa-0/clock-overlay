@@ -23,7 +23,7 @@ class App():
         return app
 
     def _get_clock(self) -> ttk.Label:
-        font = Font(family="Consolas", size=11)
+        font = Font(family="courier 10 pitch", size=11)
         clock = ttk.Label(master=self._app, anchor="center", font=font)
         style = ttk.Style(master=clock.master)
         style.configure("TLabel", foreground="#00FF00", background="black")
@@ -34,7 +34,7 @@ class App():
         return clock
 
     def _reset_position(self, event: tk.Event | None = None) -> None:
-        x, y = self._app.winfo_screenwidth()-50, 5
+        x, y = self._app.winfo_screenwidth()-56, 5
         self._app.geometry(f"+{x}+{y}")
         return None
 
